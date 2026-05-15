@@ -1108,9 +1108,9 @@ const stepData = {
                         <strong>공공데이터포털</strong>
                         <span class="btn">이동하기</span>
                     </a>
-                    <a href="https://kosis.kr" target="_blank" class="hunting-btn">
-                        <span class="icon">📈</span>
-                        <strong>국가통계포털(KOSIS)</strong>
+                    <a href="https://www.airkorea.or.kr/web/" target="_blank" class="hunting-btn">
+                        <span class="icon">🌬️</span>
+                        <strong>에어코리아 (대기환경정보)</strong>
                         <span class="btn">이동하기</span>
                     </a>
                 </div>
