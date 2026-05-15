@@ -289,7 +289,6 @@ function toggleLike(id, btn) {
 }
 
 function addComment(id, input) {
-    const commentText = document.getElementById("news-comment-input").value; saveToGoogleSheet("뉴스 댓글", commentText);
     if (!input.value.trim()) return;
     const info = infographics.find(i => i.id === id);
     if (!info) return;
