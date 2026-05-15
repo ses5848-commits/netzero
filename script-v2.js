@@ -106,6 +106,7 @@ function handlePostSurveySubmit(event) {
     }); // For internal tracking if needed
 
     postSurveyData.push({ studentId: currentUser.id, name: currentUser.name, answers });
+    saveToGoogleSheet("사후 설문", JSON.stringify(answers));
 
     alert("사후 설문이 완료되었습니다! 이제 성찰 일지를 작성해주세요.");
 
@@ -128,6 +129,7 @@ function handleJournalSubmit() {
         name: currentUser.name,
         answers: [qA, qB, qC]
     });
+    saveToGoogleSheet("성찰 일지", JSON.stringify([qA, qB, qC]));
 
     showCertificate();
 }
@@ -236,6 +238,7 @@ function handleExhibitionUpload() {
         likes: 0,
         comments: []
     });
+    saveToGoogleSheet("전시회 업로드", title);
 
     alert("최종 결과물이 전시회에 업로드되었습니다!");
     celebrate();
@@ -325,6 +328,7 @@ function handleFileUpload(input) {
         name: file.name,
         time: timeStr
     });
+    saveToGoogleSheet("파일 업로드", file.name);
 
     alert(`'${file.name}' 파일이 ${currentUser.modum} 보물상자에 안전하게 보관되었습니다!`);
     loadStep3Content(); // Refresh UI
@@ -427,6 +431,7 @@ function handleChartUpload(event) {
         answers: [q1, q2, q3],
         time: timeStr
     });
+    saveToGoogleSheet("그래프 분석", title);
 
     alert("그래프 해석이 등록되었습니다!");
     celebrate();
@@ -630,6 +635,7 @@ function handleSurveySubmit(event) {
     });
 
     surveyData.push({ studentId: currentUser.id, name: currentUser.name, answers });
+    saveToGoogleSheet("사전 설문", JSON.stringify(answers));
 
     const activity = studentActivity.find(s => s.id === currentUser.id);
     if (activity) activity.survey = true;
@@ -755,6 +761,7 @@ function joinModum(modumName) {
         updateUIForUser();
         hideGroupModal();
         alert(`${modumName}에 합류하셨습니다! ✨`);
+        saveToGoogleSheet("모둠 선택", modumName);
 
         // Refresh if in a step
         if (document.getElementById('step-modal').style.display === 'block') {
@@ -1465,6 +1472,7 @@ function addNewsComment() {
         content: input.value,
         time: timeStr
     });
+    saveToGoogleSheet("뉴스 댓글", input.value);
 
     input.value = '';
     loadNewsBoard();
@@ -1497,6 +1505,7 @@ function submitPost() {
         content: input.value,
         time: timeStr
     });
+    saveToGoogleSheet("탐구 질문", input.value);
 
     input.value = '';
     loadBoard(currentBoard);
@@ -1581,6 +1590,7 @@ function submitTreasureHunt() {
         title: input.value,
         time: timeStr
     });
+    saveToGoogleSheet("뉴스 보물", input.value);
 
     input.value = '';
     alert("보물을 찾으셨군요! 저장되었습니다.");
